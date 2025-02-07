@@ -1,0 +1,12 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - echo "Uploading backend script to S3..."
+      - echo $S3_TOOLS_STORAGE_BUCKET_NAME
+      - echo $GPU_MONITOR_SCRIPT_FILE_NAME
+      - echo $GPU_MONITOR_SERVICE_FILE_NAME
+      - ls -l backend/scripts/
+      - aws s3 cp backend/scripts/$GPU_MONITOR_SCRIPT_FILE_NAME $S3_TOOLS_STORAGE_BUCKET_NAME/$GPU_MONITOR_SCRIPT_FILE_NAME
+      - aws s3 cp backend/scripts/$GPU_MONITOR_SERVICE_FILE_NAME $S3_TOOLS_STORAGE_BUCKET_NAME/$GPU_MONITOR_SERVICE_FILE_NAME
